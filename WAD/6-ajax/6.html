@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // Create an XMLHttpRequest object
+const xhr = new XMLHttpRequest();
+
+// Set up a callback function to handle the response
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+      // Request was successful, handle the response
+      const response = xhr.responseText;
+      console.log(response);
+
+      var h1=document.getElementsByTagName("h1");
+
+      h1[0].innerHTML=response.toString();
+    } else {
+      // Request failed, handle the error
+      console.log('Error:', xhr.status);
+    }
+  }
+};
+
+// Configure the request
+xhr.open('GET', 'https://api.sampleapis.com/beers/ale'); // Replace '/data' with the actual URL of your server endpoint
+
+// Send the request
+xhr.send();
+
+    </script>
+</head>
+<body>
+    
+    <h1>"Hello world</h1>                      
+</body>
+</html>

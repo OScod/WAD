@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <script>
+    function validateRegistrationForm() {
+  var firstName = document.getElementById('first-name').value;
+  var lastName = document.getElementById('last-name').value;
+  var address = document.getElementById('address').value;
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  var mobileNumber = document.getElementById('mobile-number').value;
+
+  // Regular expression patterns for validation
+  var namePattern = /^[a-zA-Z]{6,}$/;
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var passwordPattern = /^.{6,}$/;
+  var mobilePattern = /^\d{10}$/;
+
+  // Validate First Name
+  if (!namePattern.test(firstName)) {
+    alert('First Name should contain alphabets only and be at least 6 characters long.');
+    return false;
+  }
+
+  // Validate Last Name
+  if (lastName.trim() === '') {
+    alert('Last Name should not be empty.');
+    return false;
+  }
+
+  // Validate Address
+  if (address.trim() === '') {
+    alert('Address should not be empty.');
+    return false;
+  }
+
+  // Validate Email
+  if (!emailPattern.test(email)) {
+    alert('Invalid Email Address. Please enter a valid email address.');
+    return false;
+  }
+
+  // Validate Password
+  if (!passwordPattern.test(password)) {
+    alert('Password should be at least 6 characters long.');
+    return false;
+  }
+
+  // Validate Mobile Number
+  if (!mobilePattern.test(mobileNumber)) {
+    alert('Mobile Number should contain exactly 10 digits.');
+    return false;
+  }
+
+  // All fields are valid
+  return true;
+}
+
+  </script>
+</head>
+<body>
+  <h1>Registration Form</h1>
+  <form onsubmit="return validateRegistrationForm()">
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" required>
+    <br>
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" required>
+    <br>
+    <label for="address">Address:</label>
+    <input type="text" id="address" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <br>
+    <label for="mobile-number">Mobile Number:</label>
+    <input type="tel" id="mobile-number" required>
+    <br>
+    <input type="submit" value="Register">
+  </form>
+</body>
+</html>
